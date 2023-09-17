@@ -15,13 +15,13 @@ fetch(
     };
 
     const layout = {
-        title: 'Weight vs Squat Max',
+        title: 'Body Weight vs Squat Max',
         xaxis: {
-            title: 'Weight (lbs)', // Customize the x-axis title
+            title: 'Body Weight (kgs)', // Customize the x-axis title
             // Add more x-axis customizations here if needed
         },
         yaxis: {
-            title: 'Squat Max (lbs)', // Customize the y-axis title
+            title: 'Squat Max (kgs)', // Customize the y-axis title
             // Add more y-axis customizations here if needed
         }
     };
