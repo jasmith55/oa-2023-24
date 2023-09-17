@@ -11,7 +11,7 @@ app.use(cors({
 
 app.get("/", (req, res) => {
     const data = [];
-    const filePath = "data.csv";
+    const filePath = "powerliftingData.csv";
 
     // Create a readable stream to read the CSV file line by line
     const rl = readline.createInterface({
@@ -25,11 +25,11 @@ app.get("/", (req, res) => {
         const values = line.split(",");
         
         // Assuming the first value is 'x' and the second is 'y'
-        const x = parseFloat(values[0]);
-        const y = parseFloat(values[1]);
+        const weight = parseFloat(values[5]);
+        const squatMax = parseFloat(values[6]);
 
         // Push the data to the array
-        data.push({ x, y });
+        data.push({ weight, squatMax });
     });
 
     rl.on("close", () => {
