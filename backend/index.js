@@ -8,10 +8,20 @@ app.use(cors({
 }))
 
 app.get("/", (req, res) => {
-    res.send({
-        x: [1, 2, 3],
-        y: [4, 5, 6]
-    }).status(200)
+    const data = [];
+    fs.createReadStream("data.csv")
+        .pipe(csv())
+        .on("data", (row) => {
+            data.push(row);
+        })
+        .on("end", () => {
+            // Send the parsed data as a JSON response
+            res.json(data);
+        })
+        .on("error", (error) => {
+            console.error("Error reading CSV file:", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        });
 })
 
 
