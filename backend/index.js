@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
     let lineCt = 0;
 
     rl.on("line", (line) => {
-        if(lineCt != 0){
+        if(lineCt != 0 || lineCt>200){
             // Split each line into an array using a comma as the delimiter
             const values = line.split(",");
         
