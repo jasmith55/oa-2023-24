@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
             const squatMax = parseFloat(values[6]);
 
             // Push the data to the array
-            data.push([weight, squatMax ]);
+            data.push([weight/90, squatMax/90 ]);
         }
         lineCt++;
     });
