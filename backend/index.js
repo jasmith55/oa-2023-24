@@ -20,16 +20,21 @@ app.get("/", (req, res) => {
         terminal: false
     });
 
-    rl.on("line", (line) => {
-        // Split each line into an array using a comma as the delimiter
-        const values = line.split(",");
-        
-        // Assuming the first value is 'x' and the second is 'y'
-        const weight = parseFloat(values[5]);
-        const squatMax = parseFloat(values[6]);
+    let lineCt = 0;
 
-        // Push the data to the array
-        data.push({ weight, squatMax });
+    rl.on("line", (line) => {
+        if(lineCt != 0){
+            // Split each line into an array using a comma as the delimiter
+            const values = line.split(",");
+        
+            // Assuming the first value is 'x' and the second is 'y'
+            const weight = parseFloat(values[5]);
+            const squatMax = parseFloat(values[6]);
+
+            // Push the data to the array
+            data.push({ weight, squatMax });
+        }
+        lineCt++;
     });
 
     rl.on("close", () => {
